@@ -19,3 +19,4 @@ Scenario: Perform Award winner Page Operations
      And I click one the first book
      And I click on cart to see details and buy
      Then I choose the address for delivery
+     And I close the browser
