@@ -29,7 +29,7 @@ public class AwardWinnersPageTest extends TestBase {
 	Logger logger = LogManager.getLogger(AwardWinnersPageTest.class);
 	
 	//public static int RowNum=1;
-	@BeforeTest
+	@Given("Given I am on the browser")
 	public void start_browser()
 	{
 		OpenBrowser();
@@ -50,7 +50,7 @@ public class AwardWinnersPageTest extends TestBase {
 		Assert.assertNotEquals(uname, "My Account");
 		//lp.user_logout();
 	}
-	
+	@When("I click on login link and login with "vijayvel10301@gmail.com" and "group@123"")
 	  @DataProvider(name="LoginDetails") public Object[][] datasupplier() throws
 	  EncryptedDocumentException, IOException {
 	  Object[] [] input = ExcelUtility.getTestData("Sheet2"); 
@@ -58,7 +58,8 @@ public class AwardWinnersPageTest extends TestBase {
 	  
 	  }
 	  
-	  @Test(priority=2)
+     
+	 @Then("Then I click on Award winner section and sort books by discount")
 	  public void click_AwardWinner() {
 		  logger.info("Testing AwardWinners Page Functionality");
 		  hp.clickaward();
@@ -69,23 +70,23 @@ public class AwardWinnersPageTest extends TestBase {
 		  ap.sortaward();
 	  }
 	  
-	  @Test(priority=3)
+	  @And("I click one the first book")
 	  public void click_book() throws InterruptedException {
 		  ap.buybook();
 		  Assert.assertTrue(ap.logo());
 	  }
-	  @Test(priority=4)
+	  @And("I click on cart to see details and buy")
 	  public void buy_book() throws InterruptedException {
 		  ap.Cart();
 	
 	  }
-	  @Test(priority=5)
+	  @Then("I choose the address for delivery")
 	  public void address() throws InterruptedException {
 		Assert.assertTrue(ap.logoutvisible());
 		ap.Save();
 		lp.user_logout();
 	  }
-	  @AfterTest
+	  @And("I close the browser")
 		public void close_browser()
 		{
 			driver.close();
